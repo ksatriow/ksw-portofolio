@@ -1,0 +1,10 @@
+<html>
+    <%- include('../partials/header', { title: "Home", isAuth }) %> 
+    <body>
+        <%- include('../partials/navbar') %> 
+        <div class="container p-5">
+            <h1>Hello, <%= userData.username %> </h1>
+            <h1>ID: <%= userData.id %> </h1>
+        </div>
+    </body>
+</html>

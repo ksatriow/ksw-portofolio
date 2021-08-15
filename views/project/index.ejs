@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Header -->
+  <%- include('../partials/header'); %>
+  <body>
+    <!-- Navbar -->
+    <%- include('../partials/navcms'); %>
+
+    <div class="container">
+        <h1 class="my-5">Certificate</h1>
+        <div id="portofolio-container" class="row mb-1">
+          <% article.forEach(item => {%>
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= item.description %></h6>
+            </div>
+          </div>          
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- Footer -->
+  <%- include('../partials/footer'); %>
+</html>
