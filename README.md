@@ -14,6 +14,7 @@ This is my personal portofolio website using MVC pattern and there is CMS dashbo
 - Passport
 - Bootstrap
 - Ejs
+- Model View Controller (MVC) Pattern
 
 ## How to use
 
@@ -22,10 +23,6 @@ This is my personal portofolio website using MVC pattern and there is CMS dashbo
 - Create your database with -> sequelize db:create
 - Migrate your table with -> sequelize db:create
 - Run the code with -> npm run start
-
-## Api Docs
-
-[Here is the postman documentation](https://documenter.getpostman.com/view/5826819/TzzHnDMQ)
 
 ## Website Preview
 
