@@ -1,5 +1,9 @@
 # Personal Portofolio With CMS
 
+<p align="center">
+  <img src="./preview/portofolioku.png" height="auto" width="100%">
+</p>
+
 ## Description
 
 This is my personal portofolio website using MVC pattern and there is CMS dashboard for certificate
@@ -31,10 +35,10 @@ This is my personal portofolio website using MVC pattern and there is CMS dashbo
 ## Preview
 
 1. Home
-![Home](/preview/home.png)
+   ![Home](/preview/home.png)
 2. CMS Dashboard
-![CMS](/preview/cmsdashboard.png)
+   ![CMS](/preview/cmsdashboard.png)
 3. Display data in dashboard
-![Dashboard](/preview/result.png)
+   ![Dashboard](/preview/result.png)
 4. Display data in portofolio
-![Portofolio](/preview/resultinporto.png)
+   ![Portofolio](/preview/resultinporto.png)
