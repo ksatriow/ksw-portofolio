@@ -1,0 +1,32 @@
+name: CI CRON UPDATE DATE
+
+on:
+  schedule:
+    - cron: '0 0,3,6,9 * * *'
+jobs:
+  cron-date:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3      
+        with:
+         persist-credentials: false
+         fetch-depth: 0
+      - name: Declare date variable
+        run: |
+          echo "date=$(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+      - name: Write into DATE_NOW.md
+        run: |
+          echo $date > DATE_NOW.md
+          cat DATE_NOW.md
+      - name: Commit
+        run: |          
+          git config --local user.email "${{ secrets.EMAIL }}"
+          git config --local user.name "ksatriow"
+          git status
+          git add -A
+          git commit -m "commit of $date"
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          directory: "."
+          github_token: ${{ secrets.GIT_TOKEN }}
