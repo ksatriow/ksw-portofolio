@@ -15,6 +15,10 @@ services:
       - SECRET_KEY=rahasia123
     depends_on:
       - db
+    env_file:
+      - .env
+    volumes:
+      - uploads:/app/public/uploads
 
   db:
     image: postgres:13
@@ -29,3 +33,4 @@ services:
 
 volumes:
   pgdata:
+  uploads:
