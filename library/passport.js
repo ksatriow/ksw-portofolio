@@ -1,7 +1,7 @@
 
 const passport = require('passport');
 const { User } = require('../models');
-const { Strategy : JwtStrategy, ExtractJwt } = require('passport-jwt' );
+const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 require('dotenv').config();
 
 var cookieExtractor = (req) => {
@@ -20,13 +20,12 @@ const options = {
     secretOrKey: process.env.SECRET_KEY,
 }
 
-passport.use(new JwtStrategy (options, async (payload, done) => {
+passport.use(new JwtStrategy(options, async (payload, done) => {
     // payload adalah hasil terjemahan JWT, sesuai dengan apa yang kita masukkan di parameter pertama dari jwt.sign
-    console.log(options.secretOrKey);
-    User.findByPk (payload.id)
-     .then(user => done(null, user))
-     .catch(err => done(err, false))
-    }))
+    User.findByPk(payload.id)
+        .then(user => done(null, user))
+        .catch(err => done(err, false))
+}))
 
 // Kita exports karena akan kita gunakan sebagai middleware
 module.exports = passport;
