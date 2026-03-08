@@ -11143,4 +11143,127 @@ footer.footer .social-link:hover {
   height:100%;
   width:100%;
   position:absolute;
+}/* Project Card Horizontal Redesign */
+.project-card-horizontal {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1d;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.project-img-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card-horizontal:hover .project-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-title {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.project-description {
+    color: #b0b0b0;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.project-tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.project-tag:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-view-details {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.btn-view-details:hover {
+    background-color: #fff;
+    color: #1a1a1d;
+    border-color: #fff;
+}
+
+.btn-view-details i {
+    transition: transform 0.3s ease;
+}
+
+.btn-view-details:hover i {
+    transform: translateX(5px);
+}
+
+/* Responsive adjustments */
+@media (min-width: 992px) {
+    .project-card-horizontal {
+        flex-direction: row;
+        align-items: stretch;
+        height: auto;
+        min-height: 320px;
+    }
+
+    .project-img-wrapper {
+        width: 45%;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .project-content {
+        padding: 40px;
+    }
 }
