@@ -13,7 +13,7 @@ module.exports = {
     create: (req, res) => res.render("./cms_project/create"),
     doCreate: async (req, res) => {
         try {
-            const { title, description } = req.body;
+            const { title, description, project_url } = req.body;
             let image_url = null;
 
             if (req.files && req.files.image) {
@@ -24,6 +24,7 @@ module.exports = {
                 title,
                 description,
                 image_url,
+                project_url
             });
 
             res.redirect("/cms/project");
@@ -42,7 +43,7 @@ module.exports = {
     },
     doUpdate: async (req, res) => {
         try {
-            const { title, description } = req.body;
+            const { title, description, project_url } = req.body;
             const project = await Project.findByPk(req.params.id);
 
             let image_url = project.image_url;
@@ -55,7 +56,7 @@ module.exports = {
             }
 
             await Project.update(
-                { title, description, image_url },
+                { title, description, image_url, project_url },
                 { where: { id: req.params.id } }
             );
             res.redirect("/cms/project");

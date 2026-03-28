@@ -24,6 +24,11 @@
                                     value="<%= project.title %>" required />
                             </div>
                             <div class="mb-3">
+                                <label class="form-label text-white">Project URL</label>
+                                <input type="url" class="form-control glass-input" name="project_url"
+                                    value="<%= project.project_url %>" placeholder="https://example.com" />
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label text-white">Description</label>
                                 <textarea class="form-control glass-input" name="description" rows="4"
                                     required><%= project.description %></textarea>

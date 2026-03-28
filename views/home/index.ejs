@@ -192,7 +192,8 @@
                       <div class="project-tags">
                         <span class="project-tag">Project</span>
                       </div>
-                      <a href="#contact" class="btn-view-details">
+                      <a href="<%= project.project_url ? project.project_url : '#' %>" class="btn-view-details"
+                        <%=project.project_url ? 'target="_blank"' : '' %>>
                         View Details <i class="fas fa-arrow-right ms-2"></i>
                       </a>
                     </div>
