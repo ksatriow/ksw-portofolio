@@ -6,55 +6,55 @@
 
 ## 📝 Description
 
-This is a personal portfolio website built with the MVC pattern, featuring a secure CMS dashboard for managing projects and certificates. The application is fully Dockerized and includes a modern, dark-themed UI.
+This is a personal portfolio website built with the MVC (Model-View-Controller) pattern, featuring a secure and user-friendly **CMS dashboard** for managing both 'Projects' and 'Certificates' independently. The application is fully Dockerized for effortless deployment and boasts a seamless, modern, dynamic dark-themed UI.
 
 ## 🚀 Key Features
 
-- **Modern UI/UX**: Dark theme with glassmorphism design, responsive layout, and smooth animations.
+- **Modern UI/UX**: Distinctive dark theme with glassmorphism design, responsive layouts, intuitive hover effects, and proportional thumbnail image scaling using `object-fit: cover`.
+- **Full CMS Capabilities**:
+  - Independent CRUD operations for **Projects** (Works) and **Certificates**.
+  - Interactive UI for uploading image covers directly from the CMS Panel.
+  - Changes instantly reflect dynamically on the homepage portfolio.
 - **Secure Authentication**: 
-  - JWT-based auth with HTTP-only cookies
-  - Rate limiting (Brute-force protection)
-  - Secure password hashing (Bcrypt)
-  - "Remember Me" functionality (7 days)
-- **CMS Dashboard**: Manage projects and content easily.
-- **Project API**: Full REST API with authentication and media upload support.
-- **Media Management**: Upload images and videos for projects with automatic validation and cleanup.
-- **Dockerized**: Easy deployment with Docker and Docker Compose.
+  - JWT-based auth utilizing HTTP-only cookies.
+  - Rate limiting against brute-force attacks.
+  - Secure password hashing (Bcrypt).
+  - "Remember Me" functionality (7 days duration).
+- **Project API**: Full REST API endpoints with authentication and multipart media upload support built-in alongside the web forms.
+- **Auto-Deployment**: Docker Compose configuration that inherently applies Sequelize migrations and database checking/seeding directly upon container boot.
 
 ## 🛠 Tech Stack
 
 - **Backend**: Node.js, Express.js
 - **Database**: PostgreSQL, Sequelize ORM
 - **Auth**: Passport.js, JWT, Bcrypt
-- **Frontend**: EJS, Bootstrap 5, Vanilla CSS
+- **Frontend**: EJS View Engine, Bootstrap 5, Vanilla CSS
 - **DevOps**: Docker, Docker Compose
 
 ## 📸 Preview
 
-### 1. Homepage (Portfolio)
+### 1. Homepage (Dynamic Portfolio)
+The homepage auto-fetches real data via standard database calls, meaning no more hard-coded project texts.
 <p align="center">
   <img src="./preview/homepage-v2.png" alt="Homepage" width="100%">
 </p>
 
-### 2. Login Page (New Design)
+### 2. Login Page (Dark Glassmorphism)
 <p align="center">
   <img src="./preview/login-v2.png" alt="Login Page" width="80%">
 </p>
 
-### 3. CMS Dashboard
+### 3. CMS Dashboard (Projects & Certificates)
+Manage all your data through elegant data tables integrated with direct edit and add capabilities.
 <p align="center">
   <img src="./preview/cms-dashboard-v2.png" alt="CMS Dashboard" width="100%">
 </p>
 
-### 5. Certificates Section
-<p align="center">
-  <img src="./preview/certificates-v2.png" alt="Certificates Section" width="100%">
-</p>
-
-
 ## 📦 How to Run
 
 ### Option 1: Using Docker (Recommended)
+
+Start the environment out-of-the-box. The container will automatically run Database Migrations and Seeders simultaneously.
 
 1. **Clone the repository**
    ```bash
@@ -62,16 +62,17 @@ This is a personal portfolio website built with the MVC pattern, featuring a sec
    cd ksw-portofolio
    ```
 
-2. **Run with Docker Compose**
+2. **Build and Run with Docker Compose**
    ```bash
-   docker-compose up --build
+   docker compose up -d --build
    ```
+   *Note: Using `--build` ensures any code refinements you pulled are ingested properly.*
 
 3. **Access the application**
-   - Homepage: http://localhost:3000
-   - Login: http://localhost:3000/user/login
+   - Homepage: `http://localhost:3000`
+   - CMS Login: `http://localhost:3000/user/login`
 
-### Option 2: Manual Installation
+### Option 2: Manual Installation without Docker
 
 1. **Install dependencies**
    ```bash
@@ -80,9 +81,9 @@ This is a personal portfolio website built with the MVC pattern, featuring a sec
 
 2. **Configure Database**
    - Create a `.env` file based on `.env.example`
-   - Update database credentials in `config/config.js`
+   - Ensure an active local PostgreSQL server runs and update existing credentials in `config/config.js` properly.
 
-3. **Setup Database**
+3. **Database Setup**
    ```bash
    npx sequelize-cli db:create
    npx sequelize-cli db:migrate
@@ -97,13 +98,13 @@ This is a personal portfolio website built with the MVC pattern, featuring a sec
 ## 🔑 Default Credentials
 
 - **Username**: `admin`
-- **Password**: `admin123`
+- **Password**: `password` (Depends on your local `.env` seeding)
 
-> **Note**: Registration is disabled by default for security. You can enable it in `router/adminRouter.js` if needed.
+> **Note**: Registration is disabled by default for portfolio security purposes. You can re-enable it strictly in `router/adminRouter.js`.
 
 ## 📡 API Documentation
 
-The application provides a REST API for managing projects.
+The application concurrently provides a REST API tailored for external consumption.
 
 **Base URL**: `/project`
 
@@ -111,13 +112,9 @@ The application provides a REST API for managing projects.
 |--------|----------|------|-------------|
 | GET | `/` | No | List all projects |
 | GET | `/:id` | No | Get single project |
-| POST | `/` | Yes | Create project (supports image/video upload) |
+| POST | `/` | Yes | Create project (supports image upload) |
 | PUT | `/:id` | Yes | Update project |
 | DELETE | `/:id` | Yes | Delete project |
-
-**Media Upload**:
-- Images: Max 5MB (.jpg, .png, .webp)
-- Videos: Max 50MB (.mp4, .webm)
 
 ## 📄 License
 
