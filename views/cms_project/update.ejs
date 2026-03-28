@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Update Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <%- include('../partials/header'); %>
+</head>
+
+<body class="auth-body flex-column align-items-stretch" style="padding-top: 80px">
+    <%- include('../partials/navcms'); %>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="glass-card shadow-lg p-5">
+                        <h3 class="text-white mb-4 fw-bold">Update Project</h3>
+                        <form action="/cms/project/update/<%= project.id %>" method="post"
+                            enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label class="form-label text-white">Title</label>
+                                <input type="text" class="form-control glass-input" name="title"
+                                    value="<%= project.title %>" required />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-white">Description</label>
+                                <textarea class="form-control glass-input" name="description" rows="4"
+                                    required><%= project.description %></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label text-white">Cover Image <span class="text-muted">(Leave empty
+                                        to keep current image)</span></label>
+                                <% if (project.image_url) { %>
+                                    <div class="mb-2">
+                                        <img src="<%= project.image_url %>"
+                                            style="height: 100px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);"
+                                            onerror="this.style.display='none'">
+                                    </div>
+                                    <% } %>
+                                        <input type="file" class="form-control glass-input" name="image"
+                                            accept="image/*" />
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a href="/cms/project" class="btn btn-outline-secondary rounded-pill px-4">Cancel</a>
+                                <button type="submit" class="btn btn-primary btn-gradient px-4">Update Project</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

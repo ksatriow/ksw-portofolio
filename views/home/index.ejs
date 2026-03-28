@@ -99,7 +99,7 @@
                       Built core features for apps with 10K+ downloads.
                       Leveraging configuration management, CI/CD, and DevOps processes.
                     </p>
-                    <a class="btn btn-primary" href="https://kukuhportofolio.netlify.app/">Download CV</a>
+                    <a class="btn btn-primary" href="#download-cv">Download CV</a>
                   </div>
                 </div>
               </div>
@@ -150,14 +150,16 @@
         </div>
       </section>
       <!-- Callout-->
-      <section class="callout">
+      <section class="callout" id="download-cv">
         <div class="container px-4 px-lg-5 text-center">
           <h2 class="mx-auto mb-5">
             Silahkan download
             <em>CV</em>
             milik saya
           </h2>
-          <a class="btn btn-primary btn-xl" href="https://kukuhportofolio.netlify.app/">Download Now!</a>
+          <a class="btn btn-primary btn-xl"
+            href="https://drive.google.com/file/d/1lJj8eQja5qyKR_sR9R_CAvUXtbNDKzh5/view?usp=drive_link"
+            target="_blank">Download Now!</a>
         </div>
       </section>
       <!-- Portfolio Section -->
@@ -169,85 +171,39 @@
           <div class="row">
             <div class="col-xl-10 mx-auto">
 
-              <!-- BTrack -->
-              <div class="project-card-horizontal mb-4">
-                <div class="project-img-wrapper">
-                  <img src="assets/img/btrack.png" alt="BTrack" loading="lazy">
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">BTrack</h3>
-                  <p class="project-description">Bus Tracker Application. A real-time tracking system for public
-                    transportation.</p>
-                  <div class="project-tags">
-                    <span class="project-tag">Android</span>
-                    <span class="project-tag">Firebase</span>
-                    <span class="project-tag">Maps API</span>
+              <% if (projects && projects.length> 0) { %>
+                <% projects.forEach(project=> { %>
+                  <div class="project-card-horizontal mb-4">
+                    <div class="project-img-wrapper">
+                      <% if (project.image_url) { %>
+                        <img src="<%= project.image_url %>" alt="<%= project.title %>" loading="lazy"
+                          onerror="this.onerror=null; this.src='/assets/img/ksw.jpg';">
+                        <% } else { %>
+                          <img src="/assets/img/ksw.jpg" alt="Portfolio Image" loading="lazy">
+                          <% } %>
+                    </div>
+                    <div class="project-content">
+                      <h3 class="project-title">
+                        <%= project.title %>
+                      </h3>
+                      <p class="project-description">
+                        <%= project.description %>
+                      </p>
+                      <div class="project-tags">
+                        <span class="project-tag">Project</span>
+                      </div>
+                      <a href="#contact" class="btn-view-details">
+                        View Details <i class="fas fa-arrow-right ms-2"></i>
+                      </a>
+                    </div>
                   </div>
-                  <a href="https://github.com/ksatriow/Intro-To-Modbus" class="btn-view-details">
-                    View Details <i class="fas fa-arrow-right ms-2"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- GitFinder -->
-              <div class="project-card-horizontal mb-4">
-                <div class="project-img-wrapper">
-                  <img src="assets/img/gitfinder.png" alt="GitFinder" loading="lazy">
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">GitFinder</h3>
-                  <p class="project-description">Finding git user information. Search and view GitHub user profiles and
-                    repositories.</p>
-                  <div class="project-tags">
-                    <span class="project-tag">React</span>
-                    <span class="project-tag">GitHub API</span>
-                    <span class="project-tag">CSS</span>
-                  </div>
-                  <a href="https://github.com/ksatriow/Motion" class="btn-view-details">
-                    View Details <i class="fas fa-arrow-right ms-2"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- WarungKu -->
-              <div class="project-card-horizontal mb-4">
-                <div class="project-img-wrapper">
-                  <img src="assets/img/warung.png" alt="WarungKu" loading="lazy">
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">WarungKu</h3>
-                  <p class="project-description">Frontend and Backend for WarungKu. E-commerce platform for local shops.
-                  </p>
-                  <div class="project-tags">
-                    <span class="project-tag">Node.js</span>
-                    <span class="project-tag">Express</span>
-                    <span class="project-tag">MySQL</span>
-                  </div>
-                  <a href="https://github.com/ksatriow/WarungAPI" class="btn-view-details">
-                    View Details <i class="fas fa-arrow-right ms-2"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Motion -->
-              <div class="project-card-horizontal mb-4">
-                <div class="project-img-wrapper">
-                  <img src="assets/img/motion.png" alt="Motion" loading="lazy">
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">Motion</h3>
-                  <p class="project-description">Movie information app. Browse and discover movies with detailed
-                    information.</p>
-                  <div class="project-tags">
-                    <span class="project-tag">Kotlin</span>
-                    <span class="project-tag">MVVM</span>
-                    <span class="project-tag">TMDB API</span>
-                  </div>
-                  <a href="https://github.com/ksatriow/Motion" class="btn-view-details">
-                    View Details <i class="fas fa-arrow-right ms-2"></i>
-                  </a>
-                </div>
-              </div>
+                  <% }) %>
+                    <% } else { %>
+                      <div class="text-center text-muted col-12 py-5">
+                        <i class="fas fa-folder-open mb-3" style="font-size: 2rem; opacity: 0.5;"></i><br>
+                        No projects found. Check back later!
+                      </div>
+                      <% } %>
 
             </div>
           </div>

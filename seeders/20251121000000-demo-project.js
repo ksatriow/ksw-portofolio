@@ -14,24 +14,6 @@ module.exports = {
                     description: 'Bus Tracker Application',
                     createdAt: new Date(),
                     updatedAt: new Date()
-                },
-                {
-                    title: 'GitFinder',
-                    description: 'Finding git user information',
-                    createdAt: new Date(),
-                    updatedAt: new Date()
-                },
-                {
-                    title: 'Smart Home',
-                    description: 'IoT based home automation',
-                    createdAt: new Date(),
-                    updatedAt: new Date()
-                },
-                {
-                    title: 'E-Commerce',
-                    description: 'Online shopping platform',
-                    createdAt: new Date(),
-                    updatedAt: new Date()
                 }
             ], {});
         }

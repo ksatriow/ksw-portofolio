@@ -1,23 +1,16 @@
-const { Project } = require("../models");
+const { Certificate } = require("../models");
 
 module.exports = {
   index: (req, res) => {
-    Project.findAll({}).then((article) => {
-      if (article.length !== 0) {
-        res.render("./cms/index", { article });
-      } else {
-        res.json({
-          status: 400,
-          message: "data kosong",
-        });
-      }
+    Certificate.findAll({}).then((article) => {
+      res.render("./cms/index", { article });
     });
   },
   create: (req, res) => res.render("./cms/create"),
   doCreate: (req, res) => {
     const { title, description } = req.body;
 
-    Project.create({
+    Certificate.create({
       title,
       description,
     }).then((article) => {
@@ -25,14 +18,14 @@ module.exports = {
     });
   },
   update: (req, res) => res.render("./cms/update/", { article }),
-  doUpdate: (async(req, res) => {
+  doUpdate: (async (req, res) => {
     // // cara 1
     // const { title, description } = req.body;
     // const userId = req.params.id;
     // const query = {
     //   where: { id: userId },
     // };
-    // Project.update({ title, description }, query)
+    // Certificate.update({ title, description }, query)
     //   .then(() => {
     //     // req.flash('success', 'Book successfully updated');
     //     // res.redirect('./cms');
@@ -48,24 +41,24 @@ module.exports = {
         where: { id: userId },
       };
 
-      const project = await Project.update(
+      const project = await Certificate.update(
         {
           title: title,
           description: description,
         },
         query
       );
-      return res.redirect('/cms/update/'+userId);
+      return res.redirect('/cms/update/' + userId);
     } catch (error) {
-        console.log(error)
-        // return res.redirect('/cms/update/'+req.params.id);
+      console.log(error)
+      // return res.redirect('/cms/update/'+req.params.id);
     }
   }),
   delete: (req, res) => res.render("./cms/delete"),
   doDelete: (req, res) => {
     const userId = req.params.id;
 
-    Project.destroy({
+    Certificate.destroy({
       where: { id: userId },
     })
       .then((data) => {
@@ -85,7 +78,7 @@ module.exports = {
   detail: (req, res) => {
     const articleId = req.params.id;
 
-    Project.findOne({
+    Certificate.findOne({
       where: { id: articleId },
     })
       .then((article) => {
