@@ -203,12 +203,29 @@
                       <div class="text-center text-muted col-12 py-5">
                         <i class="fas fa-folder-open mb-3" style="font-size: 2rem; opacity: 0.5;"></i><br>
                         No projects found. Check back later!
-                      </div>
-                      <% } %>
+                        <% } %>
 
+                          <% if (totalProjectPages> 1) { %>
+                            <div class="d-flex justify-content-center mt-5">
+                              <nav aria-label="Projects pagination">
+                                <ul class="pagination">
+                                  <% for(let i=1; i<=totalProjectPages; i++) { %>
+                                    <li class="page-item <%= pPage === i ? 'active' : '' %>" style="margin: 0 5px;">
+                                      <a class="page-link text-white rounded"
+                                        style="background: <%= pPage === i ? 'var(--gradient-main)' : 'rgba(255,255,255,0.1)' %>; border: none;"
+                                        href="?projectPage=<%= i %>&certPage=<%= cPage %>#portfolio">
+                                        <%= i %>
+                                      </a>
+                                    </li>
+                                    <% } %>
+                                </ul>
+                              </nav>
+                            </div>
+                            <% } %>
+
+                      </div>
             </div>
           </div>
-        </div>
       </section>
       <!-- Portfolio-->
       <!-- Certificate Section -->
@@ -230,6 +247,25 @@
               </div>
               <% }) %>
           </div>
+
+          <% if (totalCertPages> 1) { %>
+            <div class="d-flex justify-content-center mt-5">
+              <nav aria-label="Certificates pagination">
+                <ul class="pagination">
+                  <% for(let i=1; i<=totalCertPages; i++) { %>
+                    <li class="page-item <%= cPage === i ? 'active' : '' %>" style="margin: 0 5px;">
+                      <a class="page-link text-white rounded"
+                        style="background: <%= cPage === i ? 'var(--gradient-main)' : 'rgba(255,255,255,0.1)' %>; border: none;"
+                        href="?projectPage=<%= pPage %>&certPage=<%= i %>#certificate">
+                        <%= i %>
+                      </a>
+                    </li>
+                    <% } %>
+                </ul>
+              </nav>
+            </div>
+            <% } %>
+
         </div>
       </section>
 
