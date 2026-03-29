@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Project.init({
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     image_url: DataTypes.STRING,
     video_url: DataTypes.STRING,
     project_url: DataTypes.STRING
