@@ -1,0 +1,699 @@
+/* ═══════════════════════════════════════════════════
+   MOTION DESIGN v2 — Inspired by motionsites.ai
+   A premium, spatial dark-mode motion system.
+   ═══════════════════════════════════════════════════ */
+
+/* ─── 1. ANIMATED BACKGROUND ORBS ─── */
+.motion-orbs {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.motion-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    will-change: transform;
+}
+
+.motion-orb--1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.18), transparent 70%);
+    top: -15%;
+    right: -10%;
+    animation: orbFloat1 25s ease-in-out infinite;
+}
+
+.motion-orb--2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 127, 80, 0.12), transparent 70%);
+    bottom: 10%;
+    left: -8%;
+    animation: orbFloat2 30s ease-in-out infinite;
+}
+
+.motion-orb--3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.1), transparent 70%);
+    top: 55%;
+    right: 15%;
+    animation: orbFloat3 22s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(40px, -50px) scale(1.08); }
+    66%      { transform: translate(-30px, 30px) scale(0.95); }
+}
+@keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(-40px, -30px) scale(1.05); }
+    66%      { transform: translate(20px, 50px) scale(0.92); }
+}
+@keyframes orbFloat3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(50px, -40px) scale(1.1); }
+}
+
+/* ─── 2. SUBTLE GRID OVERLAY ─── */
+.motion-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.025;
+    background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+    background-size: 80px 80px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
+    mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
+}
+
+/* ─── 3. FLOATING PARTICLES ─── */
+.motion-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.motion-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(138, 43, 226, 0.35);
+    border-radius: 50%;
+    animation: particleDrift linear infinite;
+}
+.motion-particle:nth-child(1) { top: 15%; left: 8%;  animation-duration: 18s; }
+.motion-particle:nth-child(2) { top: 55%; left: 82%; animation-duration: 24s; animation-delay: 3s; width: 2px; height: 2px; background: rgba(255,127,80,0.25); }
+.motion-particle:nth-child(3) { top: 35%; left: 28%; animation-duration: 20s; animation-delay: 5s; }
+.motion-particle:nth-child(4) { top: 75%; left: 62%; animation-duration: 28s; animation-delay: 2s; width: 4px; height: 4px; background: rgba(138,43,226,0.18); }
+.motion-particle:nth-child(5) { top: 8%;  left: 50%; animation-duration: 16s; animation-delay: 4s; width: 2px; height: 2px; background: rgba(255,127,80,0.35); }
+.motion-particle:nth-child(6) { top: 65%; left: 18%; animation-duration: 26s; animation-delay: 7s; }
+.motion-particle:nth-child(7) { top: 25%; left: 72%; animation-duration: 21s; animation-delay: 9s; width: 2px; height: 2px; }
+.motion-particle:nth-child(8) { top: 88%; left: 42%; animation-duration: 23s; animation-delay: 6s; background: rgba(255,127,80,0.18); }
+
+@keyframes particleDrift {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(40px); opacity: 0; }
+}
+
+
+/* ─── 5. SHIMMER TEXT GRADIENT ─── */
+.text-gradient {
+    background: linear-gradient(
+        90deg,
+        #8a2be2 0%, #ff7f50 20%, #e8d5b7 40%,
+        #ffffff 50%,
+        #e8d5b7 60%, #ff7f50 80%, #8a2be2 100%
+    ) !important;
+    background-size: 200% 100% !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: shimmer 4s ease-in-out infinite !important;
+}
+@keyframes shimmer {
+    0%   { background-position: 100% 50%; }
+    50%  { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Badge override: visible with glow border */
+.hero-badge {
+    color: white;
+    background: rgba(138, 43, 226, 0.25);
+    border: 1px solid rgba(138, 43, 226, 0.6);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(25px) scale(.92);
+    animation: heroIn .9s cubic-bezier(.16,1,.3,1) .3s forwards,
+               badgePulse 3s ease-in-out 1.2s infinite;
+}
+.hero-badge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+    animation: badgeSweep 3s ease-in-out infinite;
+}
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(138,43,226,.2); border-color: rgba(138,43,226,.6); }
+    50%      { box-shadow: 0 0 35px rgba(138,43,226,.45); border-color: rgba(255,127,80,.6); }
+}
+@keyframes badgeSweep {
+    0%   { left: -100%; }
+    50%  { left: 100%; }
+    100% { left: 100%; }
+}
+
+/* Navbar dot: override text-gradient */
+.navbar-brand .text-primary.text-gradient,
+.navbar-brand .text-primary {
+    -webkit-text-fill-color: currentColor !important;
+    background: none !important;
+    color: var(--accent-purple, #8a2be2) !important;
+    animation: dotPulse 2.5s ease-in-out infinite !important;
+}
+
+/* ─── 6. SCROLL REVEAL SYSTEM ─── */
+[data-motion] {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition:
+        opacity .8s cubic-bezier(.16,1,.3,1),
+        transform .8s cubic-bezier(.16,1,.3,1);
+}
+[data-motion="up"]    { transform: translateY(50px); }
+[data-motion="down"]  { transform: translateY(-50px); }
+[data-motion="left"]  { transform: translateX(-60px); }
+[data-motion="right"] { transform: translateX(60px); }
+[data-motion="scale"] { transform: scale(.85); }
+[data-motion="fade"]  { transform: none; }
+
+[data-motion].is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Stagger delays via data-delay */
+[data-delay="1"] { transition-delay: .1s; }
+[data-delay="2"] { transition-delay: .2s; }
+[data-delay="3"] { transition-delay: .3s; }
+[data-delay="4"] { transition-delay: .4s; }
+[data-delay="5"] { transition-delay: .5s; }
+[data-delay="6"] { transition-delay: .6s; }
+
+/* ─── 7. HERO ENTRANCE CHOREOGRAPHY ─── */
+.hero-section {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Word-by-word reveal animation */
+.hero-title {
+    overflow: hidden;
+}
+.hero-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%) rotate(6deg);
+    animation: wordReveal .8s cubic-bezier(.16,1,.3,1) forwards;
+    animation-delay: calc(.5s + var(--word-i, 0) * .1s);
+}
+@keyframes wordReveal {
+    to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+/* "Kukuh" — animated rainbow shimmer */
+.hero-name {
+    background: linear-gradient(
+        90deg,
+        #8a2be2 0%, #6a5acd 18%, #00bfff 36%,
+        #ffffff 50%,
+        #00bfff 64%, #6a5acd 82%, #8a2be2 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation:
+        wordReveal .8s cubic-bezier(.16,1,.3,1) .6s forwards,
+        nameShimmer 3s ease-in-out 1.5s infinite;
+    position: relative;
+}
+.hero-name::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #8a2be2, #00bfff, #8a2be2);
+    background-size: 200% 100%;
+    border-radius: 2px;
+    animation: nameShimmer 3s ease-in-out 1.5s infinite;
+}
+@keyframes nameShimmer {
+    0%   { background-position: 100% 50%; }
+    50%  { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Subtitle entrance */
+.hero-subtitle {
+    opacity: 0;
+    transform: translateY(35px);
+    animation: heroIn .9s cubic-bezier(.16,1,.3,1) 1.2s forwards;
+    position: relative;
+}
+.hero-subtitle::after {
+    content: '|';
+    font-weight: 100;
+    color: #8a2be2;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Stats row entrance */
+.hero-stats {
+    opacity: 0;
+    transform: translateY(35px);
+    animation: heroIn .9s cubic-bezier(.16,1,.3,1) 1.4s forwards;
+}
+
+/* Stat number — animated color gradient */
+.stat-number {
+    display: inline-block;
+    position: relative;
+    background: linear-gradient(
+        90deg,
+        #8a2be2 0%, #6a5acd 25%, #00bfff 50%,
+        #6a5acd 75%, #8a2be2 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: statColorMove 4s ease-in-out infinite;
+    font-size: 2.2rem;
+}
+.stat-number::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #8a2be2, #00bfff);
+    border-radius: 2px;
+    animation: underlineGrow 1s cubic-bezier(.16,1,.3,1) 2s forwards;
+}
+@keyframes statColorMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes underlineGrow { to { width: 100%; } }
+
+@keyframes heroIn {
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─── 7b. SECTION HEADING GLOW TEXT ─── */
+#services h2,
+#portfolio h2,
+#certificate h2,
+.callout h2,
+footer h2 {
+    text-shadow:
+        0 0 40px rgba(138,43,226,.15),
+        0 0 80px rgba(138,43,226,.05);
+}
+
+/* Callout heading shimmer gradient */
+.callout h2 {
+    background: linear-gradient(90deg, #fff 0%, #e0c3fc 30%, #ff7f50 50%, #e0c3fc 70%, #fff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s ease-in-out infinite;
+}
+
+/* Footer heading glow */
+footer h2 {
+    background: linear-gradient(90deg, #fff 0%, #c084fc 40%, #ff7f50 60%, #fff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s ease-in-out infinite;
+}
+
+/* ─── 8. HERO IMAGE: FLOAT + ENTRANCE ─── */
+.hero-image-container {
+    opacity: 0;
+    transform: translateY(50px) scale(.92) rotate(3deg);
+    animation: heroImgIn 1.2s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+@keyframes heroImgIn {
+    to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+
+.hero-img {
+    animation: heroFloat 6s ease-in-out 2s infinite;
+    transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease;
+}
+.hero-img:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow:
+        0 30px 60px rgba(138,43,226,.25),
+        0 0 80px rgba(138,43,226,.08);
+}
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-14px); }
+}
+
+/* Hero glow ring pulse */
+.hero-image-bg {
+    animation: glowPulse 5s ease-in-out infinite;
+}
+@keyframes glowPulse {
+    0%, 100% { opacity: .3; transform: translate(-50%,-50%) scale(1); }
+    50%      { opacity: .55; transform: translate(-50%,-50%) scale(1.12); }
+}
+
+/* ─── 9. (moved to stat-number class above) ─── */
+
+/* ─── 10. GLASS CARD ENHANCED ─── */
+.glass-card {
+    transition:
+        transform .45s cubic-bezier(.16,1,.3,1),
+        border-color .4s ease,
+        box-shadow .4s ease;
+    position: relative;
+    overflow: hidden;
+    /* kill the original fadeInUp animation */
+    animation: none !important;
+}
+
+/* Shine sweep on hover */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.04), transparent);
+    transition: left .7s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+.glass-card:hover::before { left: 100%; }
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(138,43,226,.45);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 30px rgba(138,43,226,.08);
+}
+
+/* ─── 11. SERVICE CARD MOTION ─── */
+.service-card .service-icon {
+    transition: transform .4s cubic-bezier(.16,1,.3,1), color .3s ease;
+}
+.service-card:hover .service-icon {
+    transform: scale(1.25) rotate(-8deg);
+    color: #8a2be2;
+}
+.service-card .arrow-icon {
+    transition: transform .4s cubic-bezier(.16,1,.3,1), background .3s ease;
+}
+.service-card:hover .arrow-icon {
+    transform: rotate(0deg);
+    background: var(--gradient-main);
+}
+
+/* ─── 12. PROJECT CARD MOTION ─── */
+.project-card-horizontal {
+    transition:
+        transform .5s cubic-bezier(.16,1,.3,1),
+        box-shadow .5s ease;
+    position: relative;
+    overflow: hidden;
+}
+/* Gradient overlay on hover */
+.project-card-horizontal::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(138,43,226,.06) 0%, transparent 50%, rgba(255,127,80,.06) 100%);
+    opacity: 0;
+    transition: opacity .5s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.project-card-horizontal:hover::after { opacity: 1; }
+.project-card-horizontal:hover {
+    transform: translateY(-8px) scale(1.005);
+    box-shadow:
+        0 24px 55px rgba(0,0,0,.4),
+        0 0 40px rgba(138,43,226,.08);
+}
+.project-card-horizontal:hover .project-img-wrapper img {
+    transform: scale(1.08);
+}
+
+/* ─── 13. BUTTON ANIMATIONS ─── */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform .35s cubic-bezier(.16,1,.3,1),
+        box-shadow .35s ease;
+    /* kill original animation */
+    animation: none !important;
+}
+/* Ripple effect */
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,.15);
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+    transition: width .55s ease, height .55s ease;
+}
+.btn-primary:hover::before { width: 300px; height: 300px; }
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(138,43,226,.5);
+}
+.btn-primary:active {
+    transform: translateY(-1px) scale(.97);
+}
+
+/* View details underline sweep */
+.btn-view-details {
+    position: relative;
+    overflow: hidden;
+}
+.btn-view-details::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-main);
+    transition: width .4s cubic-bezier(.16,1,.3,1);
+}
+.btn-view-details:hover::before { width: 100%; }
+
+/* ─── 14. NAVBAR MOTION ─── */
+.navbar {
+    animation: navDrop .65s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes navDrop {
+    from { opacity: 0; transform: translateY(-28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.navbar .nav-link {
+    position: relative;
+}
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-main);
+    border-radius: 2px;
+    transition:
+        width .3s cubic-bezier(.16,1,.3,1),
+        left .3s cubic-bezier(.16,1,.3,1);
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 80%;
+    left: 10%;
+}
+
+.navbar-brand {
+    transition: transform .3s ease;
+}
+.navbar-brand:hover { transform: scale(1.06); }
+
+/* Brand dot */
+.navbar-brand .text-primary {
+    display: inline-block;
+    animation: dotPulse 2.5s ease-in-out infinite;
+}
+@keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.6); opacity: .65; }
+}
+
+/* ─── 15. SECTION TITLE DECORATORS ─── */
+#services h2,
+#portfolio h2,
+#certificate h2 {
+    position: relative;
+    display: inline-block;
+}
+#services h2::after,
+#portfolio h2::after,
+#certificate h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--gradient-main);
+    border-radius: 3px;
+    transition: width .6s cubic-bezier(.16,1,.3,1);
+}
+#services:hover h2::after,
+#portfolio:hover h2::after,
+#certificate:hover h2::after {
+    width: 100%;
+}
+
+/* ─── 16. CALLOUT SECTION GLOW ─── */
+.callout {
+    position: relative;
+    overflow: hidden;
+}
+.callout::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(138,43,226,.12), transparent 70%);
+    transform: translate(-50%,-50%);
+    animation: calloutPulse 6s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes calloutPulse {
+    0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: .5; }
+    50%      { transform: translate(-50%,-50%) scale(1.25); opacity: .85; }
+}
+
+/* ─── 17. CAROUSEL ENHANCED ─── */
+.carousel-item {
+    transition: transform .8s cubic-bezier(.16,1,.3,1);
+}
+#aboutCarousel.glass-card:hover {
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.3),
+        0 0 40px rgba(138,43,226,.06);
+}
+.carousel-indicators [data-bs-target] {
+    transition: background-color .3s ease, transform .3s ease;
+}
+.carousel-indicators .active {
+    transform: scaleX(1.3);
+}
+
+/* ─── 18. SOCIAL LINK MOTION ─── */
+.social-link {
+    transition:
+        transform .35s cubic-bezier(.16,1,.3,1),
+        box-shadow .35s ease,
+        background .35s ease !important;
+}
+.social-link:hover {
+    transform: translateY(-6px) scale(1.12) !important;
+    box-shadow: 0 12px 30px rgba(138,43,226,.3);
+    background: var(--gradient-main) !important;
+}
+
+/* ─── 19. SCROLL-TO-TOP ENHANCED ─── */
+.scroll-to-top {
+    transition:
+        transform .4s cubic-bezier(.16,1,.3,1),
+        box-shadow .4s ease;
+}
+.scroll-to-top:hover {
+    transform: translateY(-8px) rotate(360deg);
+}
+
+/* ─── 20. CURSOR GLOW ─── */
+.cursor-glow {
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(138,43,226,.06), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%,-50%);
+    will-change: left, top;
+}
+
+/* ─── 21. CERTIFICATE CARD ICON ─── */
+#certificate .glass-card .service-icon {
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+#certificate .glass-card:hover .service-icon {
+    transform: scale(1.25) rotate(12deg);
+}
+
+/* ─── 22. SMOOTH SCROLL (handled by JS selectively) ─── */
+html, :root { 
+    scroll-behavior: auto !important; 
+}
+
+/* ─── 23. PERFORMANCE: REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+    .motion-orbs, .motion-particles, .motion-grid, .cursor-glow {
+        display: none;
+    }
+}
+
+/* ─── 24. MOBILE: DISABLE HEAVY FX ─── */
+@media (max-width: 768px) {
+    .cursor-glow,
+    .motion-grid,
+    .motion-particles { display: none; }
+    .motion-orb { filter: blur(80px); }
+    .motion-orb--3 { display: none; }
+}

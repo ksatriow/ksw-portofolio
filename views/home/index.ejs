@@ -3,6 +3,25 @@
 <%- include('../partials/header') %>
 
   <body id="page-top">
+
+    <!-- Motion: Background Effects -->
+    <div class="motion-orbs">
+      <div class="motion-orb motion-orb--1"></div>
+      <div class="motion-orb motion-orb--2"></div>
+      <div class="motion-orb motion-orb--3"></div>
+    </div>
+    <div class="motion-particles">
+      <div class="motion-particle"></div>
+      <div class="motion-particle"></div>
+      <div class="motion-particle"></div>
+      <div class="motion-particle"></div>
+      <div class="motion-particle"></div>
+      <div class="motion-particle"></div>
+      <div class="motion-particle"></div>
+      <div class="motion-particle"></div>
+    </div>
+    <div class="motion-grid"></div>
+
     <%- include('../partials/navbar') %>
 
       <!-- Hero Section -->
@@ -10,24 +29,31 @@
         <div class="container px-4 px-lg-5">
           <div class="row align-items-center">
             <div class="col-lg-6">
-              <div class="hero-badge text-gradient">HELLO FOLKS!</div>
-              <h1 class="hero-title">I'm <span class="text-gradient">Kukuh</span>. Let's make something meaningful
-                together.</h1>
+              <div class="hero-badge">HELLO FOLKS!</div>
+              <h1 class="hero-title">
+                <span class="hero-word" style="--word-i:0">I'm</span>
+                <span class="hero-word hero-name" style="--word-i:1">Kukuh</span><span class="hero-word" style="--word-i:1">.</span>
+                <span class="hero-word" style="--word-i:2">Let's</span>
+                <span class="hero-word" style="--word-i:3">make</span>
+                <span class="hero-word" style="--word-i:4">something</span>
+                <span class="hero-word" style="--word-i:5">meaningful</span>
+                <span class="hero-word" style="--word-i:6">together.</span>
+              </h1>
               <p class="hero-subtitle">
                 Cyber Security Analyst, Android Developer, and IoT Engineer based in Trenggalek.
               </p>
 
-              <div class="row mb-5">
+              <div class="row mb-5 hero-stats">
                 <div class="col-4">
-                  <h3 class="fw-bold text-gradient">25+</h3>
+                  <h3 class="fw-bold stat-number" data-target="25">25+</h3>
                   <p class="small text-muted">Happy Client</p>
                 </div>
                 <div class="col-4">
-                  <h3 class="fw-bold text-gradient">8+</h3>
+                  <h3 class="fw-bold stat-number" data-target="8">8+</h3>
                   <p class="small text-muted">Years Exp.</p>
                 </div>
                 <div class="col-4">
-                  <h3 class="fw-bold text-gradient">35+</h3>
+                  <h3 class="fw-bold stat-number" data-target="35">35+</h3>
                   <p class="small text-muted">Completed Project</p>
                 </div>
               </div>
@@ -35,17 +61,18 @@
             <div class="col-lg-6 text-center">
               <div class="hero-image-container">
                 <div class="hero-image-bg"></div>
-                <!-- Using a placeholder for now as no profile image was found -->
                 <img src="assets/img/ksw.jpg" class="hero-img shadow-lg" alt="Profile">
               </div>
             </div>
           </div>
         </div>
       </header>
+
       <!-- About Slider Section -->
       <section class="section-padding" id="about">
         <div class="container px-4 px-lg-5">
-          <div id="aboutCarousel" class="carousel slide glass-card" data-bs-ride="carousel">
+          <div id="aboutCarousel" class="carousel slide glass-card" data-bs-ride="carousel"
+               data-motion="scale" data-delay="1">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
@@ -59,7 +86,7 @@
                   <div class="col-lg-8 mx-auto text-center">
                     <h2 class="mb-4">Tentang Saya</h2>
                     <p class="lead mb-4">
-                      Hello! My name is Kukuh Satrio Wibowo. I'm 24 years old and I live in Trenggalek.
+                      Hello! My name is Kukuh Satrio Wibowo. I'm 29 years old and I live in Jakarta.
                       I have completed Diploma degrees at IPB University and Bachelor degrees at Pancasila University.
                       I am an Android Engineer with hands-on experience creating various products and applications.
                     </p>
@@ -94,7 +121,7 @@
                   <div class="col-lg-8 mx-auto text-center">
                     <h2 class="mb-4">Experience</h2>
                     <p class="lead mb-4">
-                      3+ years of hands-on experience supporting, automating, and optimizing mission-critical
+                      8+ years of hands-on experience supporting, automating, and optimizing mission-critical
                       deployments in AWS.
                       Built core features for apps with 10K+ downloads.
                       Leveraging configuration management, CI/CD, and DevOps processes.
@@ -120,9 +147,9 @@
       <!-- Services Section -->
       <section class="section-padding" id="services">
         <div class="container px-4 px-lg-5">
-          <h2 class="mb-5">My Services</h2>
+          <h2 class="mb-5" data-motion="up">My Services</h2>
           <div class="row gx-4 gx-lg-5">
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-motion="up" data-delay="1">
               <div class="glass-card service-card position-relative">
                 <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="service-icon"><i class="devicon-android-plain"></i></div>
@@ -130,7 +157,7 @@
                 <p class="text-muted">Java, Kotlin, Jetpack, MVVM, Clean Architecture.</p>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-motion="up" data-delay="2">
               <div class="glass-card service-card position-relative">
                 <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="service-icon"><i class="devicon-googlecloud-plain"></i></div>
@@ -138,7 +165,7 @@
                 <p class="text-muted">Docker, Kubernetes, AWS, GCP, CI/CD Pipelines.</p>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" data-motion="up" data-delay="3">
               <div class="glass-card service-card position-relative">
                 <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="service-icon"><i class="devicon-embeddedc-plain"></i></div>
@@ -149,9 +176,10 @@
           </div>
         </div>
       </section>
-      <!-- Callout-->
+
+      <!-- Callout -->
       <section class="callout" id="download-cv">
-        <div class="container px-4 px-lg-5 text-center">
+        <div class="container px-4 px-lg-5 text-center" data-motion="up">
           <h2 class="mx-auto mb-5">
             Silahkan download
             <em>CV</em>
@@ -162,18 +190,19 @@
             target="_blank">Download Now!</a>
         </div>
       </section>
+
       <!-- Portfolio Section -->
       <section class="section-padding" id="portfolio">
         <div class="container px-4 px-lg-5">
-          <h2 class="mb-5">My Works</h2>
-          <p class="text-muted mb-5">Here's a collection of projects I've worked on.</p>
+          <h2 class="mb-5" data-motion="up">My Works</h2>
+          <p class="text-muted mb-5" data-motion="up" data-delay="1">Here's a collection of projects I've worked on.</p>
 
           <div class="row">
             <div class="col-xl-10 mx-auto">
 
               <% if (projects && projects.length> 0) { %>
-                <% projects.forEach(project=> { %>
-                  <div class="project-card-horizontal mb-4">
+                <% projects.forEach((project, idx)=> { %>
+                  <div class="project-card-horizontal mb-4" data-motion="up" data-delay="<%= Math.min(idx + 1, 4) %>">
                     <div class="project-img-wrapper">
                       <% if (project.image_url) { %>
                         <img src="<%= project.image_url %>" alt="<%= project.title %>" loading="lazy"
@@ -200,7 +229,7 @@
                   </div>
                   <% }) %>
                     <% } else { %>
-                      <div class="text-center text-muted col-12 py-5">
+                      <div class="text-center text-muted col-12 py-5" data-motion="fade">
                         <i class="fas fa-folder-open mb-3" style="font-size: 2rem; opacity: 0.5;"></i><br>
                         No projects found. Check back later!
                         <% } %>
@@ -227,14 +256,14 @@
             </div>
           </div>
       </section>
-      <!-- Portfolio-->
+
       <!-- Certificate Section -->
       <section class="section-padding" id="certificate">
         <div class="container px-4 px-lg-5">
-          <h2 class="mb-5">Certificates</h2>
+          <h2 class="mb-5" data-motion="up">Certificates</h2>
           <div class="row">
-            <% certificate.forEach(item=> {%>
-              <div class="col-lg-4 mb-4">
+            <% certificate.forEach((item, idx) => {%>
+              <div class="col-lg-4 mb-4" data-motion="up" data-delay="<%= Math.min(idx + 1, 3) %>">
                 <div class="glass-card h-100">
                   <div class="service-icon"><i class="fas fa-certificate"></i></div>
                   <h4>
@@ -271,7 +300,7 @@
 
       <!-- Footer -->
       <footer class="footer text-center" id="contact">
-        <div class="container px-4 px-lg-5">
+        <div class="container px-4 px-lg-5" data-motion="up">
           <h2 class="mb-4">Let's work together</h2>
           <p class="text-muted mb-5">Have a project in mind? Let's talk.</p>
           <a class="btn btn-primary btn-xl mb-5" href="mailto:kukuhsatriowibowo@gmail.com">Email Me</a>
@@ -336,5 +365,7 @@
     // Copyright year
     document.getElementById("copyright").innerHTML = "Copyright &copy; Kukuh Satrio Wibowo " + new Date().getFullYear();
   </script>
+  <!-- Motion Engine -->
+  <script src="/assets/js/motion.js?v=8" defer></script>
 
 </html>
